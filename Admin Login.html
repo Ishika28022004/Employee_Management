@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFFFC2;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.logo {
+    width: 150px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.container {
+    text-align: center;
+    margin-bottom: 20px;
+    border: thick;
+}
+
+.login-container {
+    background-color: #e3f2fd; /* Light blue background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    border: thick;
+}
+
+.login-container h1 {
+    color: #004085; /* Dark blue color */
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #004085; /* Dark blue color */
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+.home-btn {
+    background-color: brown;
+    color:white;
+    padding: 5px 10px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 10px;
+    border: 1px solid #ddd;
+    border-radius: 12px; /* Rounded corners */
+}
+</style>
+</head>
+<body>
+<img src="https://upload.wikimedia.org/wikipedia/en/1/18/NSPCL_logo.jpg" alt="Logo" class="logo">
+<div class="container">
+<h1 class="welcome-message">Welcome to NTPC Sail Power Company Ltd, Durgapur</h1>
+</div>
+<div class="login-container">
+    <h1>Admin Login</h1>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+        <br>
+        <br>
+        <a href="home.html" class="home-btn">Home</a>
+    </form>
+    <br>
+    <button id="homeButton" style="display: none;">Home</button>
+</div>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    
+    if (username === '123' && password === '999') {
+        // Redirect to the home page if credentials are correct
+        window.location.href = 'home.html'; // Change 'home.html' to your actual home page URL
+    } else {
+        alert('Invalid Username or Password!');
+    }
+});
+
+document.getElementById('homeButton').addEventListener('click', function() {
+    window.location.href = 'home.html'; // Redirect to home page
+});
+</script>
+
+</body>
+</html>

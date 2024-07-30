@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common Location</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.edit-btn, .delete-btn, .add-btn, .save-btn {
+    padding: 5px 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+    margin-left: 5px;
+}
+
+.add-btn {
+    background-color: yellow;
+    padding: 5px 10px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 10px; /* Adjust margin as needed */
+    border: 1px solid #ddd; /* Optional border for better visibility */
+}
+
+.save-btn {
+    background-color: #2196F3;
+    color: white;
+    margin-top: 20px;
+ 
+}
+
+.logo {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.container {
+    margin-top: 20px;
+}
+.home-btn {
+    background-color: brown;
+    color:white;
+    padding: 5px 10px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 10px;
+    border: 1px solid #ddd;
+    border-radius: 12px; /* Rounded corners */
+}
+</style>
+</head>
+<body>
+<img src="https://upload.wikimedia.org/wikipedia/en/1/18/NSPCL_logo.jpg" alt="Logo" class="logo">
+<div class="container">
+<h1 class="welcome-message">Welcome to NTPC Sail Power Company Ltd, Durgapur</h1>
+<h2>Common Location</h2>
+<br>
+<br>
+<table id="locationTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Part</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Rows for Common Location Parts -->
+        <tr>
+            <td>1</td>
+            <td>IT</td>
+            <td><a href="#" class="edit-btn" onclick="editPart(this)">Edit</a></td>
+            <td><a href="#" class="delete-btn" onclick="deletePart(this)">Delete</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>HR Hall</td>
+            <td><a href="#" class="edit-btn" onclick="editPart(this)">Edit</a></td>
+            <td><a href="#" class="delete-btn" onclick="deletePart(this)">Delete</a></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Canteen</td>
+            <td><a href="#" class="edit-btn" onclick="editPart(this)">Edit</a></td>
+            <td><a href="#" class="delete-btn" onclick="deletePart(this)">Delete</a></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>CISF Office</td>
+            <td><a href="#" class="edit-btn" onclick="editPart(this)">Edit</a></td>
+            <td><a href="#" class="delete-btn" onclick="deletePart(this)">Delete</a></td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<a href="#" class="add-btn" onclick="addPart()">Add </a>
+<a href="#" class="save-btn" onclick="saveChanges()">Save</a>
+<a href="home.html" class="home-btn">Home</a>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', loadTable);
+
+function loadTable() {
+    const savedData = JSON.parse(localStorage.getItem('locationTableData'));
+    if (savedData) {
+        const table = document.getElementById('locationTable').getElementsByTagName('tbody')[0];
+        table.innerHTML = savedData.map(row => `
+            <tr>
+                <td>${row.id}</td>
+                <td>${row.part}</td>
+                <td><a href="#" class="edit-btn" onclick="editPart(this)">Edit</a></td>
+                <td><a href="#" class="delete-btn" onclick="deletePart(this)">Delete</a></td>
+            </tr>
+        `).join('');
+    }
+}
+
+function editPart(button) {
+    const row = button.closest('tr');
+    const idCell = row.children[0];
+    const partCell = row.children[1];
+    
+    const newId = prompt('Enter new ID:', idCell.textContent);
+    const newPart = prompt('Enter new Part:', partCell.textContent);
+    
+    if (newId !== null && newId.trim() !== '') {
+        idCell.textContent = newId;
+    }
+    if (newPart !== null && newPart.trim() !== '') {
+        partCell.textContent = newPart;
+    }
+}
+
+function deletePart(button) {
+    if (confirm('Are you sure you want to delete this row?')) {
+        const row = button.closest('tr');
+        row.remove();
+    }
+}
+
+function addPart() {
+    const table = document.getElementById('locationTable').getElementsByTagName('tbody')[0];
+    
+    const id = prompt('Enter ID for the new part:');
+    const part = prompt('Enter Part for the new row:');
+    
+    if (id !== null && id.trim() !== '' && part !== null && part.trim() !== '') {
+        const newRow = table.insertRow();
+        newRow.insertCell(0).textContent = id;
+        newRow.insertCell(1).textContent = part;
+        
+        const editCell = newRow.insertCell(2);
+        const deleteCell = newRow.insertCell(3);
+        
+        editCell.innerHTML = '<a href="#" class="edit-btn" onclick="editPart(this)">Edit</a>';
+        deleteCell.innerHTML = '<a href="#" class="delete-btn" onclick="deletePart(this)">Delete</a>';
+    }
+}
+
+function saveChanges() {
+    const table = document.getElementById('locationTable').getElementsByTagName('tbody')[0];
+    const rows = Array.from(table.rows).map(row => ({
+        id: row.cells[0].textContent,
+        part: row.cells[1].textContent
+    }));
+    localStorage.setItem('locationTableData', JSON.stringify(rows));
+    alert('Changes saved!');
+}
+</script>
+</body>
+</html>

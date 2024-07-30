@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="Emmergencysheet" href="Emmergency.html">
+<link rel="javascriptsheet" href="home.js">
+<style>
+/* Include the CSS code here */
+body {
+    display: flex;
+}
+
+.nav-container {
+    margin-right: 20px;
+    text-align: left;
+    flex-shrink: 0;
+}
+
+.nav-container a {
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.nav-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #004085; /* Dark blue color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin: 5px 0;
+    width: 150px; /* Set a fixed width for better alignment */
+}
+
+.nav-container button:hover {
+    background-color: #003366; /* Darker blue on hover */
+}
+
+.container {
+    margin-left: 20px;
+}
+
+.logo {
+    display: block;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+thead {
+    background-color: rgb(127, 180, 245);
+}
+
+thead th {
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 10px; /* Optional, for better spacing */
+    flex: auto;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    padding: 10px;
+    font-size: 16px;
+    width: 150px;
+    margin-right: 10px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #004085; /* Dark blue color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+   
+}
+
+.search-button:hover {
+    background-color: #003366; /* Darker blue on hover */
+
+}
+</style>
+</head>
+<body>
+<div class="nav-container">
+    <img src="https://upload.wikimedia.org/wikipedia/en/1/18/NSPCL_logo.jpg" alt="Logo" class="logo">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+      <form action="home.html">
+      <input type="text" id="searchInput" class="search-bar" placeholder="searchInput " onkeyup="filterTable()">
+      <br>
+        <button class="search-button" type="button" onclick="filterTable()">Search</button>   
+      </form>
+      
+    <a href="Admin Login.html">
+        <button onclick="showSection('adminLogin')">Admin Login</button>
+    </a>
+    <a href="Common_Location.html">
+        <button onclick="showSection('commonLocation')">Common Location</button>
+    </a>
+    <a href="Emergency.html">
+        <button onclick="showSection('emergency')">Emergency</button>
+    </a>
+</div>
+<div class="container">
+  <h1 class="welcome-message">Welcome to NTPC Sail Power Company Ltd, Durgapur</h1>
+  
+  
+  <table class="table">
+      <thead>
+          <tr>
+              <th>Photo</th>
+              <th>Name</th>
+              <th>Emp No</th>
+              <th>Designation</th>
+              <th>Organization</th>
+              <th>Department</th>
+              <th>Contact no</th>
+              <th>Email</th>
+          </tr>
+      </thead>
+      <tbody>
+          <!-- Example Row -->
+          <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                  <select>
+                      <option value="Organization 1">Organization 1</option>
+                      <option value="Organization 2">Organization 2</option>
+                      <option value="Organization 3">Organization 3</option>
+                      <option value="Organization 4">Organization 4</option>
+                      <option value="Organization 5">Organization 5</option>
+                      <option value="Organization 6">Organization 6</option>
+                      <option value="Organization 7">Organization 7</option>
+                      <option value="Organization 8">Organization 8</option>
+                      <option value="Organization 9">Organization 9</option>
+                      <option value="Organization 10">Organization 10</option>
+                  </select>
+                  <div id="displayArea"></div>
+              </td>
+              <td>
+                  <select>
+                      <option value="All">All</option>
+                      <option value="Chemistry">Chemistry</option>
+                      <option value="UCR (Operation)">UCR (Operation)</option>
+                      <option value="Store">Store</option>
+                      <option value="Technical Service">Technical Service</option>
+                      <option value="Mechanical Maintenance">Mechanical Maintenance</option>
+                      <option value="Electrical">Electrical</option>
+                      <option value="CHP (Coal Handling Plant)">CHP (Coal Handling Plant)</option>
+                  </select>
+              </td>
+              <td></td>
+              <td></td>
+          </tr>
+          <tr>
+              <td><a href="reg1.html"><img src="prakriti.jpg" alt="Employee Photo" width="50"></a></td>
+              <td>prakriti nayak</td>
+              <td>12345</td>
+              <td>Manager</td>
+              <td>Organization 7</td>
+              <td>Chemistry</td>
+              <td> 5578012360</td>
+              <td>prakriti@gmail.com</td>
+          </tr>
+          <tr>
+              <td><a href="reg2.html"><img src="sakshi.jpg" alt="Employee Photo" width="50"></a></td>
+              <td>Sakshi Singh</td>
+              <td>12346</td>
+              <td>Manager</td>
+              <td>Organization 2</td>
+              <td>UCR(operation)</td>
+              <td>123456789</td>
+              <td>Sakshi@gmail.com</td>
+          </tr>
+          <tr>
+              <td><a href="reg3.html"><img src="ratnadeep.jpg" alt="Employee Photo" width="50"></a</td>
+              <td>Ratnadeep Pal</td>
+              <td>12347</td>
+              <td>Manager</td>
+              <td>Organization 10</td>
+              <td>Store</td>
+              <td>2233456709</td>
+              <td>ratnadeep@gmail.com</td>
+          </tr>
+          <tr>
+              <td><a href="reg4.html"><img src="yashyashbi.jpg" alt="Employee Photo" width="50"></a</td>
+              <td>Yashyashbi Dubey</td>
+              <td>12348</td>
+              <td>Manager</td>
+              <td>Organization 1</td>
+              <td>Technical Service</td>
+              <td> 5578012360</td>
+              <td>yashyashbi@gmail.com</td>
+          </tr>
+          <tr>
+              <td><a href="reg5.html"><img src="sayan.jpg" alt="Employee Photo" width="50"></a</td>
+              <td>Sayan Chatterjee</td>
+              <td>12349</td>
+              <td>Manager</td>
+              <td>Organization 2</td>
+              <td>Mechanical Maintenance</td>
+              <td>123456789</td>
+              <td>sayan@gmail.com</td>
+          </tr>
+          <tr>
+              <td><a href="reg6.html"><img src="meghna.jpg" alt="Employee Photo" width="50"></a></td>
+              <td>Meghna Sinha</td>
+              <td>12350</td>
+              <td>Manager</td>
+              <td>Organization 4</td>
+              <td>Electrical</td>
+              <td>9876543210</td>
+              <td>meghna@gmail.com</td>
+          </tr>
+          <tr>
+              <td><a href="reg7.html"><img src="survi.jpg" alt="Employee Photo" width="50"></a</td>
+              <td>Survi Mukherjee</td>
+              <td>12351</td>
+              <td>Manager</td>
+              <td>Organization 6</td>
+              <td>CHP(coal Handling Plant)</td>
+              <td>123456789</td>
+              <td>survi@gmail.com</td>
+          </tr>
+          <tr>
+              <td><a href="reg8.html"><img src="aniket.jpg" alt="Employee Photo" width="50"></a</td>
+              <td>Aniket Banerjee</td>
+              <td>12352</td>
+              <td>Manager</td>
+              <td>Organization 9</td>
+              <td>Technical</td>
+              <td>9876543210</td>
+              <td>aniket@gmail.com</td>
+          </tr>
+          <tr>
+              <td><a href="reg9.html"><img src="vishakha.jpg" alt="Employee Photo" width="50"></a</td>
+              <td>Vishakha Sharma</td>
+              <td>12353</td>
+              <td>Manager</td>
+              <td>Organization 5</td>
+              <td>Mechanical</td>
+              <td> 5578012360</td>
+              <td>vishakha@gmail.com</td>
+          </tr>
+          <tr>
+              <td><a href="reg10.html"><img src="shelly.jpg" alt="Employee Photo" width="50"></a</td>
+              <td>Shelly Bhatacharjee</td>
+              <td>12354</td>
+              <td>Manager</td>
+              <td>Organization 4</td>
+              <td>Technical</td>
+              <td>123456789</td>
+              <td>shelly@gmail.com</td>
+          </tr>
+          <tr>
+              <td><a href="reg11.html"><img src="sheryashi.jpg" alt="Employee Photo" width="50"></a</td>
+              <td>Sheryashi Saha</td>
+              <td>12355</td>
+              <td>Manager</td>
+              <td>Organization 6</td>
+              <td>Chemistry</td>
+              <td>9876543210</td>
+              <td>sheryashi@gmail.com</td>
+          </tr>
+          <tr>
+              <td><a href="reg12.html">><img src="jhil.jpg" alt="Employee Photo" width="50"></a</td>
+              <td>Jhil Chatterjee</td>
+              <td>12356</td>
+              <td>Manager</td>
+              <td>Organization 8</td>
+              <td>URC</td>
+              <td> 5578012360</td>
+              <td>jhil@gmail.com</td>
+          </tr>
+          <!-- Repeat the above row structure for more rows as needed -->
+      </tbody>
+  </table>
+</div>
+
+<script>
+    function filterTable() {
+        const searchValue = document.getElementById('searchInput').value.toLowerCase();
+        const table = document.querySelector('.table tbody');
+        const rows = table.getElementsByTagName('tr');
+
+        for (let i = 0; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName('td');
+            const name = cells[1].innerText.toLowerCase();
+            const empNo = cells[2].innerText.toLowerCase();
+            const designation = cells[3].innerText.toLowerCase();
+            const department = cells[5].innerText.toLowerCase();
+
+            if (name.includes(searchValue) || empNo.includes(searchValue) || designation.includes(searchValue) || department.includes(searchValue)) {
+                rows[i].style.display = '';
+            } else {
+                rows[i].style.display = 'none';
+            }
+        }
+    }
+</script>
+
+</body>
+</body>
+</html>

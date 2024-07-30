@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        .details-group {
+            margin-bottom: 15px;
+        }
+        .details-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .details-group p {
+            margin: 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .edit-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+        .edit-btn:hover {
+            background-color: #218838;
+        }
+        .home-btn {
+            background-color: brown;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            
+            width: 100%;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+        .home-btn:hover {
+            background-color: #A52A2A;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Employee Details</h2>
+        <div class="details-group">
+            <label for="employeeId">Employee ID</label>
+            <p id="employeeId">E12345</p>
+        </div>
+        <div class="details-group">
+            <label for="dob">Date of Birth</label>
+            <p id="dob">1990-01-01</p>
+        </div>
+        <div class="details-group">
+            <label for="designation">Designation</label>
+            <p id="designation">Software Engineer</p>
+        </div>
+        <div class="details-group">
+            <label for="grade">Grade</label>
+            <p id="grade">A</p>
+        </div>
+        <div class="details-group">
+            <label for="department">Department</label>
+            <p id="department">IT</p>
+        </div>
+        <div class="details-group">
+            <label for="email">Email</label>
+            <p id="email">example@example.com</p>
+        </div>
+       
+        <a href="home.html" class="home-btn">Home</a>
+    </div>
+</body>
+</html>

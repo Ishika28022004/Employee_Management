@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        .details-group {
+            margin-bottom: 15px;
+        }
+        .details-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .details-group p, .details-group input {
+            margin: 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .details-group input {
+            display: none;
+            width: calc(100% - 22px);
+        }
+        .edit-btn, .save-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+           
+            width: 100%;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+        .edit-btn:hover, .save-btn:hover {
+            background-color: #218838;
+        }
+        .home-btn {
+            background-color: brown;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+        .home-btn:hover {
+            background-color: #A52A2A;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Employee Details</h2>
+        <div class="details-group">
+            <label for="employeeId">Employee ID</label>
+            <p id="employeeId">12345</p>
+        </div>
+        <div class="details-group">
+            <label for="dob">Date of Birth</label>
+            <p id="dob">1990-01-01</p>
+        </div>
+        <div class="details-group">
+            <label for="designation">Designation</label>
+            <p id="designation">Manager</p>
+            <input type="text" id="designationInput" value="Manager">
+        </div>
+        <div class="details-group">
+            <label for="grade">Grade</label>
+            <p id="grade">A</p>
+            <input type="text" id="gradeInput" value="A">
+        </div>
+        <div class="details-group">
+            <label for="department">Department</label>
+            <p id="department">Chemistry</p>
+            <input type="text" id="departmentInput" value="Chemistry">
+        </div>
+        <div id="editSaveBtns">
+            <button class="edit-btn" onclick="editDetails()">Edit</button>
+            <button class="save-btn" onclick="saveDetails()" style="display:none;">Save</button>
+        </div>
+        <br>
+        <a href="home.html" class="home-btn">Home</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            loadDetails();
+        });
+
+        function editDetails() {
+            document.getElementById('designation').style.display = 'none';
+            document.getElementById('grade').style.display = 'none';
+            document.getElementById('department').style.display = 'none';
+
+            document.getElementById('designationInput').style.display = 'block';
+            document.getElementById('gradeInput').style.display = 'block';
+            document.getElementById('departmentInput').style.display = 'block';
+
+            document.querySelector('.edit-btn').style.display = 'none';
+            document.querySelector('.save-btn').style.display = 'block';
+        }
+
+        function saveDetails() {
+            var designation = document.getElementById('designationInput').value;
+            var grade = document.getElementById('gradeInput').value;
+            var department = document.getElementById('departmentInput').value;
+
+            document.getElementById('designation').innerText = designation;
+            document.getElementById('grade').innerText = grade;
+            document.getElementById('department').innerText = department;
+
+            document.getElementById('designation').style.display = 'block';
+            document.getElementById('grade').style.display = 'block';
+            document.getElementById('department').style.display = 'block';
+
+            document.getElementById('designationInput').style.display = 'none';
+            document.getElementById('gradeInput').style.display = 'none';
+            document.getElementById('departmentInput').style.display = 'none';
+
+            document.querySelector('.edit-btn').style.display = 'block';
+            document.querySelector('.save-btn').style.display = 'none';
+
+            // Save to localStorage
+            localStorage.setItem('designation', designation);
+            localStorage.setItem('grade', grade);
+            localStorage.setItem('department', department);
+        }
+
+        function loadDetails() {
+            var designation = localStorage.getItem('designation') || 'Manager';
+            var grade = localStorage.getItem('grade') || 'A';
+            var department = localStorage.getItem('department') || 'Chemistry';
+
+            document.getElementById('designation').innerText = designation;
+            document.getElementById('grade').innerText = grade;
+            document.getElementById('department').innerText = department;
+
+            document.getElementById('designationInput').value = designation;
+            document.getElementById('gradeInput').value = grade;
+            document.getElementById('departmentInput').value = department;
+        }
+    </script>
+</body>
+</html>

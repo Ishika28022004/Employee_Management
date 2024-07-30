@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="date"] {
+            padding: 9px 10px;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #004085;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .form-group button:hover {
+            background-color: #003366;
+        }
+        .form-group button.edit {
+            background-color: #28a745;
+        }
+        .form-group button.edit:hover {
+            background-color: #218838;
+        }
+        .hidden {
+            display: none;
+        }
+        .home-btn {
+    background-color: brown;
+    color:white;
+    padding: 5px 10px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 10px;
+    border: 1px solid #ddd;
+    border-radius: 12px; /* Rounded corners */
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Employee Registration</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="employeeId">Employee ID</label>
+                <input type="text" id="employeeId" name="employeeId" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="designation">Designation</label>
+                <input type="text" id="designation" name="designation" required>
+            </div>
+            <div class="form-group">
+                <label for="grade">Grade</label>
+                <input type="text" id="grade" name="grade" required>
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <input type="text" id="department" name="department" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+            <div class="form-group">
+                <button type="button" id="saveButton">Save</button>
+                <button type="button" id="editButton" class="hidden">Edit</button>
+                <a href="home.html" class="home-btn">Home</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        const form = document.getElementById('registrationForm');
+        const saveButton = document.getElementById('saveButton');
+        const editButton = document.getElementById('editButton');
+
+        const storedDataKey = 'employeeData';
+
+        function getStoredData() {
+            return JSON.parse(localStorage.getItem(storedDataKey)) || {};
+        }
+
+        function saveData() {
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            localStorage.setItem(storedDataKey, JSON.stringify(data));
+            alert('Data saved successfully!');
+            toggleButtons();
+        }
+
+        function fillForm(data) {
+            Object.keys(data).forEach(key => {
+                const input = form.querySelector(`[name=${key}]`);
+                if (input) {
+                    input.value = data[key];
+                    input.disabled = true; // Disable input fields initially
+                }
+            });
+        }
+
+        function toggleButtons() {
+            const isEditMode = !form.querySelector('[name=employeeId]').disabled;
+            saveButton.classList.toggle('hidden', isEditMode);
+            editButton.classList.toggle('hidden', !isEditMode);
+            form.querySelectorAll('input').forEach(input => {
+                input.disabled = !isEditMode; // Enable/disable input fields based on edit mode
+            });
+        }
+
+        saveButton.addEventListener('click', saveData);
+
+        editButton.addEventListener('click', () => {
+            form.querySelectorAll('input').forEach(input => {
+                input.disabled = false; // Enable all input fields for editing
+            });
+            saveButton.classList.remove('hidden'); // Show save button
+            editButton.classList.add('hidden'); // Hide edit button
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const data = getStoredData();
+            if (Object.keys(data).length) {
+                fillForm(data);
+                toggleButtons();
+            }
+        });
+    </script>
+</body>
+</html>
